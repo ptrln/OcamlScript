@@ -1,0 +1,240 @@
+<script>
+
+print_types = function(x){document.write(x[0] + " = " + x[1] + ";<br/>")}
+
+// simple stuff
+/*
+
+let test1 = not true;;
+
+let test2 = if 3 < 6 then "win" else "fail";;
+
+let five =
+  let x = 2 in
+  let y = 3 in
+  x + y
+;;
+
+let add = fun x -> fun y z -> x + y + z;;
+
+let six = add 1 2 3;;
+
+let min a b = if a < b then a else b ;;
+
+*/
+
+/* JavaScript from ocamlscript */
+test1=new Array("bool",(!((new Array("bool", 1))[1])))
+
+/* JavaScript from ocamlscript */
+test2=(((new Array("bool", (((new Array("int", 3))[1]) < ((new Array("int", 6))[1]))))[1]) ? (new Array("string", "win")) : (new Array("string", "fail")))
+
+/* JavaScript from ocamlscript */
+five=((function(x){return ((function(y){return new Array((x)[0],(x)[1] + (y)[1])}))(new Array("int", 3))}))(new Array("int", 2))
+
+/* JavaScript from ocamlscript */
+add=(function(x){return (function(y){return (function(z){return new Array((new Array((x)[0],(x)[1] + (y)[1]))[0],(new Array((x)[0],(x)[1] + (y)[1]))[1] + (z)[1])})})})
+
+/* JavaScript from ocamlscript */
+six=(((add)(new Array("int", 1)))(new Array("int", 2)))(new Array("int", 3))
+
+
+/* JavaScript from ocamlscript */
+min=(function(a){return (function(b){return (((new Array("bool", (((a)[1]) < ((b)[1]))))[1]) ? (a) : (b))})})
+
+
+document.write("------basic tests------<br/>");
+document.write("not true -> ");
+print_types(test1);
+
+document.write("if 3 < 6 then \"win\" else \"fail\" -> ");
+
+print_types(test2);
+
+document.write("five -> ");
+print_types(five);
+
+document.write("six -> ");
+print_types(six);
+
+document.write("min(five)(six) -> ");
+print_types(min(five)(six));
+
+
+// reduce
+/*
+let list1 = [1;2;3;4;5];;
+
+let list2 = [2;4;6;8;10];;
+
+let rec sum xs =
+match xs with
+  | [] -> 0
+  | h::t -> h + (sum t)
+;;
+
+let add x y = x + y;;
+let mul x y = x * y;;
+
+let rec reduce f u xs =
+match xs with
+  | [] -> u
+  | h::t ->
+   (f h) ((reduce f) (u) (t))
+;;
+
+let sum = (reduce add) 0;;
+let prod = (reduce mul) 1;;
+
+let num_occurs n =
+  let f = fun x r -> if x = n then r + 1 else r in
+  (reduce f) 0
+;;
+
+let test3 = num_occurs 4 [1;2;4;5;4];;
+
+let map f =
+  let h = fun e r -> (f e) :: r in
+  (reduce h) []
+;;
+
+let double x = x * 2;;
+
+let list3 = (map double) list2;;
+
+*/
+
+/* JavaScript from ocamlscript */
+list1=new Array("list", new Array("int", 1), new Array("list", new Array("int", 2), new Array("list", new Array("int", 3), new Array("list", new Array("int", 4), new Array("list", new Array("int", 5), new Array("elist"))))))
+
+/* JavaScript from ocamlscript */
+list2=new Array("list", new Array("int", 2), new Array("list", new Array("int", 4), new Array("list", new Array("int", 6), new Array("list", new Array("int", 8), new Array("list", new Array("int", 10), new Array("elist"))))))
+
+/* JavaScript from ocamlscript */
+sum=(function(xs){return (function(){if((xs[0] == "elist") && true){return new Array("int", 0)}else{if((xs[0] == "list") && true){var h=xs[1];var t=xs[2];return new Array((h)[0],(h)[1] + ((sum)(t))[1])}}}) ()})
+
+/* JavaScript from ocamlscript */
+add=(function(x){return (function(y){return new Array((x)[0],(x)[1] + (y)[1])})})
+
+/* JavaScript from ocamlscript */
+mul=(function(x){return (function(y){return new Array((x)[0],(x)[1] * (y)[1])})})
+
+/* JavaScript from ocamlscript */
+reduce=(function(f){return (function(u){return (function(xs){return (function(){if((xs[0] == "elist") && true){return u}else{if((xs[0] == "list") && true){var h=xs[1];var t=xs[2];return ((f)(h))((((reduce)(f))(u))(t))}}}) ()})})})
+
+/* JavaScript from ocamlscript */
+sum=((reduce)(add))(new Array("int", 0))
+
+/* JavaScript from ocamlscript */
+prod=((reduce)(mul))(new Array("int", 1))
+
+/* JavaScript from ocamlscript */
+num_occurs=(function(n){return ((function(f){return ((reduce)(f))(new Array("int", 0))}))((function(x){return (function(r){return (((new Array("bool", (((x)[0]) == ((n)[0]))&&(((x)[1]) == ((n)[1]))))[1]) ? (new Array((r)[0],(r)[1] + (new Array("int", 1))[1])) : (r))})}))})
+
+/* JavaScript from ocamlscript */
+test3=((num_occurs)(new Array("int", 4)))(new Array("list", new Array("int", 1), new Array("list", new Array("int", 2), new Array("list", new Array("int", 4), new Array("list", new Array("int", 5), new Array("list", new Array("int", 4), new Array("elist")))))))
+
+/* JavaScript from ocamlscript */
+map=(function(f){return ((function(h){return ((reduce)(h))(new Array("elist"))}))((function(e){return (function(r){return new Array("list", (f)(e), r)})}))})
+
+/* JavaScript from ocamlscript */
+double=(function(x){return new Array((x)[0],(x)[1] * (new Array("int", 2))[1])})
+
+
+/* JavaScript from ocamlscript */
+list3=((map)(double))(list2)
+
+
+
+document.write("------map reduces------<br/>");
+
+document.write("num_occurs 4 [1;2;4;5;4] -> ");
+
+print_types(test3);
+
+document.write("sum [1;2;3;4;5] -> ");
+print_types(sum(list1));
+document.write("sum [2;4;6;8;10] -> ");
+print_types(sum(list2));
+
+document.write("prod [1;2;3;4;5] -> ");
+print_types(prod(list1));
+document.write("prod [2;4;6;8;10] -> ");
+print_types(prod(list2));
+
+document.write("prod (map double [2;4;6;8;10]) -> ");
+print_types(prod(list3));
+document.write("sum (map double [2;4;6;8;10]) -> ");
+print_types(sum(list3));
+
+
+// expressions.ml
+
+// helper functions
+unop_sin=function(x){return new Array((x)[0],Math.sin((x)[1]))}
+unop_cos=function(x){return new Array((x)[0],Math.cos((x)[1]))}
+unop_ln=function(x){return new Array((x)[0],Math.log((x)[1]))}
+unop_neg=function(x){return new Array((x)[0],(x)[1] * -1)}
+string_of_float=function(f){return new Array("string",f[1].toString())}
+abs_float=function(f){return new Array("float",Math.abs(f[1]))}
+
+contains_var=(function(e){return (function(){if((e[0] == "Var") && true){return new Array("bool", 1)}else{if((e[0] == "Unop") && true){var e1=e[2];return (contains_var)(e1)}else{if((e[0] == "Binop") && true){var e1=e[2];var e2=e[3];return new Array("bool",(((contains_var)(e1))[1]) || (((contains_var)(e2))[1]))}else{if(true){return new Array("bool", 0)}}}}}) ()})
+
+evaluate=(function(e){return (function(x){return ((function(unop_fn){return ((function(binop_fn){return (function(){if((e[0] == "Num") && true){var f=e[1];return f}else{if((e[0] == "Var") && true){return x}else{if((e[0] == "Binop") && true){var binop=e[1];var e_b1=e[2];var e_b2=e[3];return (((binop_fn)(binop))(((evaluate)(e_b1))(x)))(((evaluate)(e_b2))(x))}else{if((e[0] == "Unop") && true){var unop=e[1];var e_u=e[2];return ((unop_fn)(unop))(((evaluate)(e_u))(x))}}}}}) ()}))((function(bin){return (function(){if((bin[0] == "Add") && true){return (function(x){return (function(y){return new Array((x)[0],(x)[1] + (y)[1])})})}else{if((bin[0] == "Sub") && true){return (function(x){return (function(y){return new Array((x)[0],(x)[1] - (y)[1])})})}else{if((bin[0] == "Mul") && true){return (function(x){return (function(y){return new Array((x)[0],(x)[1] * (y)[1])})})}else{if((bin[0] == "Div") && true){return (function(x){return (function(y){return new Array((x)[0],(x)[1] / (y)[1])})})}else{if((bin[0] == "Pow") && true){return (function(x){return (function(y){return new Array((x)[0],Math.pow((x)[1],(y)[1]))})})}}}}}}) ()}))}))((function(un){return (function(){if((un[0] == "Sin") && true){return unop_sin}else{if((un[0] == "Cos") && true){return unop_cos}else{if((un[0] == "Ln") && true){return unop_ln}else{if((un[0] == "Neg") && true){return unop_neg}}}}}) ()}))})})
+
+
+derivative=(function(e){return (function(){if((e[0] == "Num") && true){return new Array("Num", new Array("float", 0.))}else{if((e[0] == "Var") && true){return new Array("Num", new Array("float", 1.))}else{if((e[0] == "Unop") && true){var u=e[1];var e1=e[2];return (function(){if((u[0] == "Sin") && true){return new Array("Binop", new Array("Mul"), new Array("Unop", new Array("Cos"), e1), (derivative)(e1))}else{if((u[0] == "Cos") && true){return new Array("Binop", new Array("Mul"), new Array("Unop", new Array("Neg"), new Array("Unop", new Array("Sin"), e1)), (derivative)(e1))}else{if((u[0] == "Ln") && true){return new Array("Binop", new Array("Div"), (derivative)(e1), e1)}else{if((u[0] == "Neg") && true){return new Array("Unop", new Array("Neg"), (derivative)(e1))}}}}}) ()}else{if((e[0] == "Binop") && true){var b=e[1];var e1=e[2];var e2=e[3];return (function(){if((b[0] == "Add") && true){return new Array("Binop", new Array("Add"), (derivative)(e1), (derivative)(e2))}else{if((b[0] == "Sub") && true){return new Array("Binop", new Array("Sub"), (derivative)(e1), (derivative)(e2))}else{if((b[0] == "Mul") && true){return new Array("Binop", new Array("Add"), new Array("Binop", new Array("Mul"), e1, (derivative)(e2)), new Array("Binop", new Array("Mul"), (derivative)(e1), e2))}else{if((b[0] == "Div") && true){return new Array("Binop", new Array("Div"), new Array("Binop", new Array("Sub"), new Array("Binop", new Array("Mul"), (derivative)(e1), e2), new Array("Binop", new Array("Mul"), e1, (derivative)(e2))), new Array("Binop", new Array("Pow"), e2, new Array("Num", new Array("float", 2.))))}else{if((b[0] == "Pow") && true){return ((((contains_var)(e2))[1]) ? (new Array("Binop", new Array("Mul"), e, new Array("Binop", new Array("Add"), new Array("Binop", new Array("Mul"), (derivative)(e2), new Array("Unop", new Array("Ln"), e1)), new Array("Binop", new Array("Div"), new Array("Binop", new Array("Mul"), (derivative)(e1), e2), e1)))) : (new Array("Binop", new Array("Mul"), e2, new Array("Binop", new Array("Mul"), (derivative)(e1), new Array("Binop", new Array("Pow"), e1, new Array("Binop", new Array("Sub"), e2, new Array("Num", new Array("float", 1.))))))))}}}}}}) ()}}}}}) ()})
+
+simplify=(function(e){return (function(){if((e[0] == "Num") && true){var n=e[1];return (((new Array("bool", (((n)[1]) < ((new Array("float", 0.))[1]))))[1]) ? (new Array("Unop", new Array("Neg"), new Array("Num", new Array((new Array("float", 0.))[0],(new Array("float", 0.))[1] - (n)[1])))) : (e))}else{if((e[0] == "Var") && true){return e}else{if((e[0] == "Unop") && true){var u=e[1];var e1=e[2];return ((function(e1dash){return ((function(m){return (function(){if((m[0] == "tuple2") && (m[1][0] == "Neg") && true && (m[2][0] == "Unop") && (m[2][1][0] == "Neg") && true && true && true){var e2=m[2][2];return (simplify)(e2)}else{if((m[0] == "tuple2") && (m[1][0] == "Neg") && true && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 0.) && true && true && true){return new Array("Num", new Array("float", 0.))}else{if((m[0] == "tuple2") && (m[1][0] == "Ln") && true && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 1.) && true && true && true){return new Array("Num", new Array("float", 0.))}else{if((m[0] == "tuple2") && (m[1][0] == "Sin") && true && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 0.) && true && true && true){return new Array("Num", new Array("float", 0.))}else{if((m[0] == "tuple2") && (m[1][0] == "Cos") && true && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 0.) && true && true && true){return new Array("Num", new Array("float", 1.))}else{if(true){return new Array("Unop", u, e1dash)}}}}}}}) ()}))(new Array("tuple2", u, e1dash))}))((simplify)(e1))}else{if((e[0] == "Binop") && true){var b=e[1];var e1=e[2];var e2=e[3];return ((function(e1dash){return ((function(e2dash){return (function(){if((b[0] == "Add") && true){return (((new Array("bool", (((e1dash)[0]) == ((e2dash)[0]))&&(((e1dash)[1]) == ((e2dash)[1]))))[1]) ? ((simplify)(new Array("Binop", new Array("Mul"), new Array("Num", new Array("float", 2.)), e1dash))) : (((function(m){return (function(){if((m[0] == "tuple2") && (m[1][0] == "Num") && (m[1][1][0] == "float") && (m[1][1][1] == 0.) && true && true && true){return e2dash}else{if((m[0] == "tuple2") && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 0.) && true && true && true){return e1dash}else{if((m[0] == "tuple2") && (m[1][0] == "Unop") && (m[1][1][0] == "Neg") && true && true && true){var e1dashdash=m[1][2];return (simplify)(new Array("Binop", new Array("Sub"), e2dash, e1dashdash))}else{if((m[0] == "tuple2") && (m[2][0] == "Unop") && (m[2][1][0] == "Neg") && true && true && true){var e2dashdash=m[2][2];return (simplify)(new Array("Binop", new Array("Sub"), e1dash, e2dashdash))}else{if((m[0] == "tuple2") && (m[1][0] == "Num") && true && (m[2][0] == "Num") && true && true){var n1=m[1][1];var n2=m[2][1];return (simplify)(new Array("Num", new Array((n1)[0],(n1)[1] + (n2)[1])))}else{if(true){return new Array("Binop", new Array("Add"), e1dash, e2dash)}}}}}}}) ()}))(new Array("tuple2", e1dash, e2dash))))}else{if((b[0] == "Sub") && true){return (((new Array("bool", (((e1dash)[0]) == ((e2dash)[0]))&&(((e1dash)[1]) == ((e2dash)[1]))))[1]) ? (new Array("Num", new Array("float", 0.))) : (((function(m){return (function(){if((m[0] == "tuple2") && (m[1][0] == "Num") && (m[1][1][0] == "float") && (m[1][1][1] == 0.) && true && true && true){return (simplify)(new Array("Unop", new Array("Neg"), e2dash))}else{if((m[0] == "tuple2") && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 0.) && true && true && true){return e1dash}else{if((m[0] == "tuple2") && (m[2][0] == "Unop") && (m[2][1][0] == "Neg") && true && true && true){var e2dashdash=m[2][2];return (simplify)(new Array("Binop", new Array("Add"), e1dash, e2dashdash))}else{if((m[0] == "tuple2") && (m[1][0] == "Unop") && (m[1][1][0] == "Neg") && true && true && true){var e1dashdash=m[1][2];return (simplify)(new Array("Unop", new Array("Neg"), new Array("Binop", new Array("Add"), e1dashdash, e2dash)))}else{if((m[0] == "tuple2") && (m[1][0] == "Num") && true && (m[2][0] == "Num") && true && true){var n1=m[1][1];var n2=m[2][1];return (simplify)(new Array("Num", new Array((n1)[0],(n1)[1] - (n2)[1])))}else{if(true){return new Array("Binop", new Array("Sub"), e1dash, e2dash)}}}}}}}) ()}))(new Array("tuple2", e1dash, e2dash))))}else{if((b[0] == "Mul") && true){return (((new Array("bool", (((e1dash)[0]) == ((e2dash)[0]))&&(((e1dash)[1]) == ((e2dash)[1]))))[1]) ? ((simplify)(new Array("Binop", new Array("Pow"), e1dash, new Array("Num", new Array("float", 2.))))) : (((function(m){return (function(){if((m[0] == "tuple2") && (m[1][0] == "Num") && (m[1][1][0] == "float") && (m[1][1][1] == 0.) && true && true && true){return new Array("Num", new Array("float", 0.))}else{if((m[0] == "tuple2") && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 0.) && true && true && true){return new Array("Num", new Array("float", 0.))}else{if((m[0] == "tuple2") && (m[1][0] == "Num") && (m[1][1][0] == "float") && (m[1][1][1] == 1.) && true && true && true){return e2dash}else{if((m[0] == "tuple2") && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 1.) && true && true && true){return e1dash}else{if((m[0] == "tuple2") && (m[1][0] == "Unop") && (m[1][1][0] == "Neg") && true && true && true){var e1dashdash=m[1][2];return (simplify)(new Array("Unop", new Array("Neg"), new Array("Binop", new Array("Mul"), e1dashdash, e2dash)))}else{if((m[0] == "tuple2") && (m[2][0] == "Unop") && (m[2][1][0] == "Neg") && true && true && true){var e2dashdash=m[2][2];return (simplify)(new Array("Unop", new Array("Neg"), new Array("Binop", new Array("Mul"), e1dash, e2dashdash)))}else{if((m[0] == "tuple2") && (m[1][0] == "Binop") && (m[1][1][0] == "Div") && true && true && true){var e1dashone=m[1][2];var e1dashtwo=m[1][3];return (simplify)(new Array("Binop", new Array("Div"), new Array("Binop", new Array("Mul"), e1dashone, e2dash), e1dashtwo))}else{if((m[0] == "tuple2") && (m[2][0] == "Binop") && (m[2][1][0] == "Div") && true && true && true){var e2dashone=m[2][2];var e2dashtwo=m[2][3];return (simplify)(new Array("Binop", new Array("Div"), new Array("Binop", new Array("Mul"), e1dash, e2dashone), e2dashtwo))}else{if((m[0] == "tuple2") && (m[1][0] == "Num") && true && (m[2][0] == "Num") && true && true){var n1=m[1][1];var n2=m[2][1];return (simplify)(new Array("Num", new Array((n1)[0],(n1)[1] * (n2)[1])))}else{if(true){return new Array("Binop", new Array("Mul"), e1dash, e2dash)}}}}}}}}}}}) ()}))(new Array("tuple2", e1dash, e2dash))))}else{if((b[0] == "Div") && true){return (((new Array("bool", (((e1dash)[0]) == ((e2dash)[0]))&&(((e1dash)[1]) == ((e2dash)[1]))))[1]) ? (new Array("Num", new Array("float", 1.))) : (((function(m){return (function(){if((m[0] == "tuple2") && (m[1][0] == "Num") && (m[1][1][0] == "float") && (m[1][1][1] == 0.) && true && true && true){return new Array("Num", new Array("float", 0.))}else{if((m[0] == "tuple2") && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 1.) && true && true && true){return e1dash}else{if((m[0] == "tuple2") && (m[1][0] == "Unop") && (m[1][1][0] == "Neg") && true && true && true){var e1dashdash=m[1][2];return (simplify)(new Array("Unop", new Array("Neg"), new Array("Binop", new Array("Div"), e1dashdash, e2dash)))}else{if((m[0] == "tuple2") && (m[2][0] == "Unop") && (m[2][1][0] == "Neg") && true && true && true){var e2dashdash=m[2][2];return (simplify)(new Array("Unop", new Array("Neg"), new Array("Binop", new Array("Div"), e1dash, e2dashdash)))}else{if((m[0] == "tuple2") && (m[1][0] == "Binop") && (m[1][1][0] == "Div") && true && true && true){var e1dashone=m[1][2];var e1dashtwo=m[1][3];return (simplify)(new Array("Binop", new Array("Div"), e1dashone, new Array("Binop", new Array("Mul"), e1dashtwo, e2dash)))}else{if((m[0] == "tuple2") && (m[2][0] == "Binop") && (m[2][1][0] == "Div") && true && true && true){var e2dashone=m[2][2];var e2dashtwo=m[2][3];return (simplify)(new Array("Binop", new Array("Div"), new Array("Binop", new Array("Mul"), e1dash, e2dashtwo), e2dashone))}else{if((m[0] == "tuple2") && (m[1][0] == "Num") && true && (m[2][0] == "Num") && true && true){var n1=m[1][1];var n2=m[2][1];return (simplify)(new Array("Num", new Array((n1)[0],(n1)[1] / (n2)[1])))}else{if(true){return new Array("Binop", new Array("Div"), e1dash, e2dash)}}}}}}}}}) ()}))(new Array("tuple2", e1dash, e2dash))))}else{if((b[0] == "Pow") && true){return ((function(m){return (function(){if((m[0] == "tuple2") && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 0.) && true && true && true){return new Array("Num", new Array("float", 1.))}else{if((m[0] == "tuple2") && (m[1][0] == "Num") && (m[1][1][0] == "float") && (m[1][1][1] == 0.) && true && true && true){return new Array("Num", new Array("float", 0.))}else{if((m[0] == "tuple2") && (m[2][0] == "Num") && (m[2][1][0] == "float") && (m[2][1][1] == 1.) && true && true && true){return e1dash}else{if((m[0] == "tuple2") && (m[2][0] == "Unop") && (m[2][1][0] == "Neg") && true && true && true){var e2dashdash=m[2][2];return (simplify)(new Array("Binop", new Array("Div"), new Array("Num", new Array("float", 1.)), new Array("Binop", new Array("Pow"), e1dash, e2dashdash)))}else{if((m[0] == "tuple2") && (m[1][0] == "Binop") && (m[1][1][0] == "Pow") && true && true && true){var e1dashone=m[1][2];var e1dashtwo=m[1][3];return (simplify)(new Array("Binop", new Array("Pow"), e1dashone, new Array("Binop", new Array("Mul"), e1dashtwo, e2dash)))}else{if(true){return new Array("Binop", new Array("Pow"), e1dash, e2dash)}}}}}}}) ()}))(new Array("tuple2", e1dash, e2dash))}}}}}}) ()}))((simplify)(e2))}))((simplify)(e1))}}}}}) ()})
+
+to_string=(function(e){return ((function(binop_to_string){return ((function(unop_to_string){return (function(){if((e[0] == "Num") && true){var n=e[1];return (((new Array("bool", (((n)[1]) >= ((new Array("float", 0.))[1]))))[1]) ? ((string_of_float)(n)) : (new Array((new Array("string", "~"))[0],(new Array("string", "~"))[1] + ((string_of_float)((abs_float)(n)))[1])))}else{if((e[0] == "Var") && true){return new Array("string", "x")}else{if((e[0] == "Unop") && true){var u=e[1];var e1=e[2];return new Array((new Array((new Array((new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((unop_to_string)(u))[1]))[0],(new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((unop_to_string)(u))[1]))[1] + (new Array("string", "("))[1]))[0],(new Array((new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((unop_to_string)(u))[1]))[0],(new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((unop_to_string)(u))[1]))[1] + (new Array("string", "("))[1]))[1] + ((to_string)(e1))[1]))[0],(new Array((new Array((new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((unop_to_string)(u))[1]))[0],(new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((unop_to_string)(u))[1]))[1] + (new Array("string", "("))[1]))[0],(new Array((new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((unop_to_string)(u))[1]))[0],(new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((unop_to_string)(u))[1]))[1] + (new Array("string", "("))[1]))[1] + ((to_string)(e1))[1]))[1] + (new Array("string", "))"))[1])}else{if((e[0] == "Binop") && true){var b=e[1];var e1=e[2];var e2=e[3];return new Array((new Array((new Array((new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((to_string)(e1))[1]))[0],(new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((to_string)(e1))[1]))[1] + ((binop_to_string)(b))[1]))[0],(new Array((new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((to_string)(e1))[1]))[0],(new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((to_string)(e1))[1]))[1] + ((binop_to_string)(b))[1]))[1] + ((to_string)(e2))[1]))[0],(new Array((new Array((new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((to_string)(e1))[1]))[0],(new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((to_string)(e1))[1]))[1] + ((binop_to_string)(b))[1]))[0],(new Array((new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((to_string)(e1))[1]))[0],(new Array((new Array("string", "("))[0],(new Array("string", "("))[1] + ((to_string)(e1))[1]))[1] + ((binop_to_string)(b))[1]))[1] + ((to_string)(e2))[1]))[1] + (new Array("string", ")"))[1])}}}}}) ()}))((function(u){return (function(){if((u[0] == "Sin") && true){return new Array("string", "sin")}else{if((u[0] == "Cos") && true){return new Array("string", "cos")}else{if((u[0] == "Ln") && true){return new Array("string", "ln")}else{if((u[0] == "Neg") && true){return new Array("string", "~")}}}}}) ()}))}))((function(b){return (function(){if((b[0] == "Add") && true){return new Array("string", "+")}else{if((b[0] == "Sub") && true){return new Array("string", "-")}else{if((b[0] == "Mul") && true){return new Array("string", "*")}else{if((b[0] == "Div") && true){return new Array("string", "/")}else{if((b[0] == "Pow") && true){return new Array("string", "^")}}}}}}) ()}))})
+
+
+/* JavaScript from ocamlscript */
+e1=new Array("Num", new Array("float", 1.))
+
+/* JavaScript from ocamlscript */
+e4=new Array("Binop", new Array("Sub"), new Array("Binop", new Array("Pow"), new Array("Var"), new Array("Var")), new Array("Var"))
+
+/* JavaScript from ocamlscript */
+e5=new Array("Binop", new Array("Mul"), new Array("Binop", new Array("Pow"), new Array("Num", new Array("float", 2.)), new Array("Var")), new Array("Unop", new Array("Ln"), new Array("Var")))
+
+
+/* JavaScript from ocamlscript */
+e6=new Array("Binop", new Array("Div"), new Array("Binop", new Array("Add"), new Array("Var"), new Array("Num", new Array("float", 1.))), new Array("Binop", new Array("Pow"), new Array("Var"), new Array("Num", new Array("float", 2.))))
+
+
+
+
+
+
+
+document.write("------expressions------<br/>");
+
+document.write("contains_var e1 -> ");
+print_types(contains_var(e1));
+document.write("contains_var e4 -> ");
+print_types(contains_var(e4));
+
+// test floats
+float2=new Array("float", 2.5)
+float3=new Array("float", 3.14)
+
+
+document.write("expression tests (compare output with ./expressions) :<br/>");
+
+print_types(to_string((simplify((derivative)(e4)))));
+print_types(evaluate(e4)(float2));
+print_types(evaluate(derivative(e4))(float3));
+
+print_types(to_string((simplify((derivative)(e5)))));
+print_types(evaluate(e5)(float3));
+print_types(evaluate(derivative(e5))(float2));
+
+print_types(to_string((simplify((derivative)(e6)))));
+print_types(evaluate(e6)(float2));
+print_types(evaluate(derivative(e6))(float3));
+
+
+
+</script>
