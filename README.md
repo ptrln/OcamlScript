@@ -5,7 +5,7 @@ CS51 Final Project
 
 Summary
 ------
-Small program that translates OCaml to JavaScript. Primarily written in OCaml to pattern match and build ASTs.
+Small program that translates/converts OCaml code to JavaScript code. Primarily written in OCaml to pattern match and build ASTs.
 
 For example:
 
