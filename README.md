@@ -1,4 +1,4 @@
-OcamlScript
+OCamlScript
 ===========
 
 CS51 Final Project
