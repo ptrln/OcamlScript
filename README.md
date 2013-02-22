@@ -28,16 +28,12 @@ Implementation
 ------
 
 *   Lex/Parser
-
     *   Ocamllex/Ocamlyacc using grammar rules to tokenise and parse Ocaml code into ASTs
 *   Abstract Syntax Trees
-
     *   Parsed Ocaml expression AST - ParsedOcamlExpr Translated JavaScript expression AST - JavaScriptExpr
 *   Translator
-
     *   let ocamljs (e:P.expression) : J.expression = ...
 *   Printer
-
     *   print_js function in JavaScriptExpr that outputs JavaScript code
 
 
