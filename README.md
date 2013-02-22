@@ -1,7 +1,7 @@
 OCamlScript
 ===========
 
-CS51 Final Project
+Harvard CS51 Final Project
 
 Summary
 ------
